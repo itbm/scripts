@@ -23,6 +23,7 @@ apt upgrade -y
 apt install snapd mysql-workbench pgadmin3 pidgin pidgin-sipe evolution evolution-ews \
 	vim dos2unix git composer s3cmd curl wget virtualbox virtualbox-ext-pack -y
 
+snap install onlyoffice-desktopeditors
 snap install phpstorm --classic
 snap install webstorm --classic
 snap install datagrip --classic
@@ -94,7 +95,7 @@ if [ "$customisations" = "gnome" ]; then
 	fi
 	gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 	gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
-	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'chromium_chromium.desktop', 'org.gnome.Evolution.desktop', 'virtualbox.desktop', 'vscode_vscode.desktop', 'phpstorm_phpstorm.desktop', 'webstorm_webstorm.desktop', 'pycharm-professional_pycharm-professional.desktop', 'datagrip_datagrip.desktop', 'mysql-workbench.desktop', 'pgadmin3.desktop', 'sublime-text_subl.desktop', 'sftpclient_sftpclient.desktop', 'gitkraken_gitkraken.desktop', 'github-desktop_github-desktop.desktop', 'postman_postman.desktop', 'remmina_remmina.desktop', 'pidgin.desktop', 'spotify_spotify.desktop']"
+	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'chromium_chromium.desktop', 'org.gnome.Evolution.desktop', 'virtualbox.desktop', 'vscode_vscode.desktop', 'phpstorm_phpstorm.desktop', 'webstorm_webstorm.desktop', 'pycharm-professional_pycharm-professional.desktop', 'datagrip_datagrip.desktop', 'mysql-workbench.desktop', 'pgadmin3.desktop', 'sublime-text_subl.desktop', 'sftpclient_sftpclient.desktop', 'gitkraken_gitkraken.desktop', 'github-desktop_github-desktop.desktop', 'postman_postman.desktop', 'remmina_remmina.desktop', 'pidgin.desktop', 'spotify_spotify.desktop', 'onlyoffice-desktopeditors_onlyoffice-desktopeditors.desktop']"
 fi
 
 if [ "$customisations" = "cinnamon" ]; then
