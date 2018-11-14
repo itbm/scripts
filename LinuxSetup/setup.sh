@@ -51,6 +51,7 @@ snap install gitkraken --beta
 snap install github-desktop --edge
 snap install sftpclient
 snap install postman
+snap install insomnia
 snap install spotify
 snap install vscode --classic
 snap install gimp
@@ -113,7 +114,7 @@ if [ "$customisations" = "gnome" ]; then
 	fi
 	gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 	gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
-	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'chromium_chromium.desktop', 'org.gnome.Evolution.desktop', 'virtualbox.desktop', 'vscode_vscode.desktop', 'phpstorm_phpstorm.desktop', 'webstorm_webstorm.desktop', 'pycharm-professional_pycharm-professional.desktop', 'datagrip_datagrip.desktop', 'mysql-workbench.desktop', 'pgadmin3.desktop', 'sublime-text_subl.desktop', 'sftpclient_sftpclient.desktop', 'gitkraken_gitkraken.desktop', 'github-desktop_github-desktop.desktop', 'postman_postman.desktop', 'remmina_remmina.desktop', 'pidgin.desktop', 'spotify_spotify.desktop', 'onlyoffice-desktopeditors_onlyoffice-desktopeditors.desktop']"
+	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'chromium_chromium.desktop', 'org.gnome.Evolution.desktop', 'virtualbox.desktop', 'vscode_vscode.desktop', 'phpstorm_phpstorm.desktop', 'webstorm_webstorm.desktop', 'pycharm-professional_pycharm-professional.desktop', 'datagrip_datagrip.desktop', 'mysql-workbench.desktop', 'pgadmin3.desktop', 'sublime-text_subl.desktop', 'sftpclient_sftpclient.desktop', 'gitkraken_gitkraken.desktop', 'github-desktop_github-desktop.desktop', 'postman_postman.desktop', 'insomnia_insomnia.desktop', remmina_remmina.desktop', 'pidgin.desktop', 'spotify_spotify.desktop', 'onlyoffice-desktopeditors_onlyoffice-desktopeditors.desktop']"
 fi
 
 if [ "$customisations" = "cinnamon" ]; then
