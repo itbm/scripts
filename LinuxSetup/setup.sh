@@ -4,9 +4,12 @@
 customisations=none;
 razer=n;
 ath10k=n;
+release=bionic;
 
 echo "*****************************************************";
 echo "*";
+echo -n "* Which release is this based on? (cosmic/bionic/xenial/zesty/trusty):";
+read release;
 echo -n "* Would you like to run customisations? (gnome/cinnamon/none):";
 read customisations;
 echo -n "* Is this a razer laptop? (y/n):";
@@ -19,6 +22,21 @@ echo "";
 
 apt update
 apt upgrade -y
+
+apt remove docker docker-engine docker.io
+apt install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   ${release} \
+   stable"
+
+apt update
+apt install docker-ce docker-compose
 
 apt install snapd mysql-workbench pgadmin3 pidgin pidgin-sipe evolution evolution-ews \
 	vim dos2unix git composer s3cmd curl wget virtualbox virtualbox-ext-pack -y
@@ -52,7 +70,7 @@ sudo snap connect remmina:cups-control :cups-control
 sudo snap connect remmina:mount-observe :mount-observe
 sudo snap connect remmina:password-manager-service :password-manager-service
 
-snap install docker
+#snap install docker
 snap install kubectl --classic
 snap install node --channel=10/stable --classic
 snap install doctl --classic
