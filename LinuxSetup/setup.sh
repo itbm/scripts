@@ -39,7 +39,7 @@ apt update
 apt install docker-ce docker-compose -y
 
 apt install snapd mysql-workbench pgadmin3 pidgin pidgin-sipe evolution evolution-ews \
-	vim dos2unix git composer s3cmd curl wget virtualbox virtualbox-ext-pack -y
+	vim dos2unix git git-svn composer s3cmd curl wget virtualbox virtualbox-ext-pack -y
 
 snap install onlyoffice-desktopeditors
 snap install phpstorm --classic
