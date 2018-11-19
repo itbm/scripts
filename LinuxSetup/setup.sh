@@ -110,6 +110,7 @@ fi
 
 if [ "$customisations" = "gnome" ]; then
 	echo "* Running gnome customisations ....";
+	apt install gnome-shell-extensions
 	if [ "$razer" = "y" ]; then
 		gsettings set org.gnome.desktop.background picture-uri file:///${HOME}/Pictures/Graphite-1920x1080.png
 	fi
