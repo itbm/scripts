@@ -77,7 +77,8 @@ snap install node --channel=10/stable --classic
 snap install doctl --classic
 snap install aws-cli --classic
 
-snap install circleci
+#snap install circleci
+curl -fLSs https://circle.ci/cli | sudo bash
 
 echo " "
 echo "*****************************************************";
