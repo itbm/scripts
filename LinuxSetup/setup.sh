@@ -83,6 +83,9 @@ curl -fLSs https://circle.ci/cli | sudo bash
 echo " "
 echo "*****************************************************";
 
+echo "* Setting inotify max_user_watches ...."
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p
+
 if [ "$razer" = "y" ]; then
 	echo "* Installing openrazer and polychromatic ....";
 	add-apt-repository ppa:openrazer/stable -y
