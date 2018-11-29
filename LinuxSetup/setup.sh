@@ -60,9 +60,6 @@ snap install vscode --classic
 snap install gimp
 
 snap install chromium
-#curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o ~/google-chrome-stable_current_amd64.deb \
-#	&& dpkg -i ~/google-chrome-stable_current_amd64.deb \
-#	&& rm ~/google-chrome-stable_current_amd64.deb
 
 curl -L https://download.teamviewer.com/download/linux/teamviewer_amd64.deb -o ~/teamviewer_amd64.deb \
 	&& apt install ~/teamviewer_amd64.deb -y \
@@ -74,13 +71,10 @@ sudo snap connect remmina:cups-control :cups-control
 sudo snap connect remmina:mount-observe :mount-observe
 sudo snap connect remmina:password-manager-service :password-manager-service
 
-#snap install docker
 snap install kubectl --classic
-#snap install node --channel=10/stable --classic
 snap install doctl --classic
 snap install aws-cli --classic
 
-#snap install circleci
 curl -fLSs https://circle.ci/cli | sudo bash
 
 echo " "
