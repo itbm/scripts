@@ -37,6 +37,7 @@ add-apt-repository \
 
 apt update
 apt install docker-ce docker-compose -y
+apt install nodejs npm -y
 
 apt install snapd mysql-workbench pgadmin3 pidgin pidgin-sipe evolution evolution-ews \
 	vim dos2unix git git-svn composer s3cmd curl wget virtualbox virtualbox-ext-pack -y
@@ -75,7 +76,7 @@ sudo snap connect remmina:password-manager-service :password-manager-service
 
 #snap install docker
 snap install kubectl --classic
-snap install node --channel=10/stable --classic
+#snap install node --channel=10/stable --classic
 snap install doctl --classic
 snap install aws-cli --classic
 
