@@ -60,6 +60,7 @@ snap install insomnia
 snap install spotify
 snap install vscode --classic
 snap install gimp
+snap install powershell --classic
 
 snap install chromium
 
