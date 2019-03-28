@@ -52,7 +52,6 @@ snap install webstorm --classic
 snap install datagrip --classic
 snap install pycharm-professional --classic
 snap install sublime-text --classic
-snap install gitkraken --beta
 snap install github-desktop --edge
 snap install sftpclient
 snap install postman
@@ -62,6 +61,10 @@ snap install vscode --classic
 snap install gimp
 snap install powershell --classic
 snap install altair
+
+curl -L https://release.gitkraken.com/linux/gitkraken-amd64.deb -o ~/gitkraken.deb \
+	&& apt install ~/gitkraken.deb -y \
+	&& rm ~/gitkraken.deb
 
 wget -qO - https://wavebox.io/dl/client/repo/archive.key | apt-key add -
 echo "deb https://wavebox.io/dl/client/repo/ x86_64/" | tee --append /etc/apt/sources.list.d/wavebox.list
