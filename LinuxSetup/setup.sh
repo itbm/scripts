@@ -37,6 +37,8 @@ add-apt-repository \
 
 apt update
 apt install docker-ce docker-compose -y
+
+curl -sL https://deb.nodesource.com/setup_11.x | -E bash -
 apt install nodejs npm -y
 
 apt install snapd mysql-workbench pgadmin3 pidgin pidgin-sipe evolution evolution-ews \
