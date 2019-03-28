@@ -83,6 +83,10 @@ curl -L https://github.com/balena-io/etcher/releases/download/v1.5.18/balena-etc
 	&& apt install ~/etcher.deb -y \
 	&& rm ~/etcher.deb
 
+curl -L https://download.expressvpn.xyz/clients/linux/expressvpn_2.0.0-1_amd64.deb -o ~/expressvpn.deb \
+	&& apt install ~/expressvpn.deb -y \
+	&& rm ~/expressvpn.deb
+
 snap install kubectl --classic
 snap install helm --classic
 snap install doctl --classic
@@ -148,6 +152,7 @@ echo " "
 echo "*****************************************************";
 echo "* You need to reboot to finish setup."
 echo "* After reboot run 'sudo groupadd docker && sudo usermod -aG docker <username>'"
+echo "* After reboot run 'expressvpn activate'"
 echo "*****************************************************";
 echo " "
 
