@@ -63,7 +63,10 @@ snap install gimp
 snap install powershell --classic
 snap install altair
 
-snap install chromium
+wget -qO - https://wavebox.io/dl/client/repo/archive.key | apt-key add -
+echo "deb https://wavebox.io/dl/client/repo/ x86_64/" | tee --append /etc/apt/sources.list.d/wavebox.list
+apt update
+apt install wavebox ttf-mscorefonts-installer -y
 
 curl -L https://download.teamviewer.com/download/linux/teamviewer_amd64.deb -o ~/teamviewer_amd64.deb \
 	&& apt install ~/teamviewer_amd64.deb -y \
