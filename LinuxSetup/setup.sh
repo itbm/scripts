@@ -81,6 +81,7 @@ curl -L https://github.com/balena-io/etcher/releases/download/v1.5.18/balena-etc
 	&& rm ~/etcher.deb
 
 snap install kubectl --classic
+snap install helm --classic
 snap install doctl --classic
 snap install aws-cli --classic
 
