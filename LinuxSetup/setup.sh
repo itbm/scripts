@@ -20,32 +20,46 @@ echo "*";
 echo "*****************************************************";
 echo "";
 
+# Update & Install
 apt update
 apt upgrade -y
-
-apt remove docker docker-engine docker.io
 apt install \
     apt-transport-https \
     ca-certificates \
     curl \
     software-properties-common -y
+
+# Install Docker
+apt remove docker docker-engine docker.io
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    ${release} \
    stable"
-
 apt update
 apt install docker-ce docker-compose -y
 
+# Install Node
 curl -sL https://deb.nodesource.com/setup_11.x | -E bash -
 apt install nodejs npm -y
 
-apt install snapd mysql-workbench pgadmin3 pidgin pidgin-sipe evolution evolution-ews \
-	vim dos2unix git git-svn composer s3cmd curl wget virtualbox virtualbox-ext-pack chromium-browser remmina -y
+# Install MySQL Workbench & pgAdmin3
+apt install mysql-workbench pgadmin3 -y 
 
+# Install Pidgin & Evolution
+apt install pidgin pidgin-sipe evolution evolution-ews -y
+
+# Install Tools
+apt install vim dos2unix git git-svn composer s3cmd curl wget -y
+
+# Install Virtualbox, Chromium & Remmina
+apt install virtualbox virtualbox-ext-pack chromium-browser remmina -y
+
+# Install PHP Extensions
 apt install php-mbstring php-dom php-pdo-sqlite sqlite3 -y
 
+# Install Snaps
+apt install snapd -y
 snap install onlyoffice-desktopeditors
 snap install phpstorm --classic
 snap install webstorm --classic
@@ -56,44 +70,56 @@ snap install github-desktop --edge
 snap install sftpclient
 snap install postman
 snap install insomnia
-snap install spotify
 snap install vscode --classic
 snap install gimp
 snap install powershell --classic
 snap install altair
-
-curl -L https://release.gitkraken.com/linux/gitkraken-amd64.deb -o ~/gitkraken.deb \
-	&& apt install ~/gitkraken.deb -y \
-	&& rm ~/gitkraken.deb
-
-wget -qO - https://wavebox.io/dl/client/repo/archive.key | apt-key add -
-echo "deb https://wavebox.io/dl/client/repo/ x86_64/" | tee --append /etc/apt/sources.list.d/wavebox.list
-apt update
-apt install wavebox ttf-mscorefonts-installer -y
-
-curl -L https://download.teamviewer.com/download/linux/teamviewer_amd64.deb -o ~/teamviewer_amd64.deb \
-	&& apt install ~/teamviewer_amd64.deb -y \
-	&& rm ~/teamviewer_amd64.deb 
-
-curl -L https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run -o ~/tresorit_installer.run \
-	&& sh ./tresorit_installer.run \
-	&& rm ~/tresorit_installer.run
-
-curl -L https://github.com/balena-io/etcher/releases/download/v1.5.18/balena-etcher-electron_1.5.18_amd64.deb -o ~/etcher.deb \
-	&& apt install ~/etcher.deb -y \
-	&& rm ~/etcher.deb
-
-curl -L https://download.expressvpn.xyz/clients/linux/expressvpn_2.0.0-1_amd64.deb -o ~/expressvpn.deb \
-	&& apt install ~/expressvpn.deb -y \
-	&& rm ~/expressvpn.deb
-
 snap install kubectl --classic
 snap install helm --classic
 snap install doctl --classic
 snap install aws-cli --classic
 
+# Install Spotify
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
+apt update
+apt install spotify-client -y
+
+# Install GitKraken
+curl -L https://release.gitkraken.com/linux/gitkraken-amd64.deb -o ~/gitkraken.deb \
+	&& apt install ~/gitkraken.deb -y \
+	&& rm ~/gitkraken.deb
+
+# Install Wavebox
+wget -qO - https://wavebox.io/dl/client/repo/archive.key | apt-key add -
+echo "deb https://wavebox.io/dl/client/repo/ x86_64/" | tee --append /etc/apt/sources.list.d/wavebox.list
+apt update
+apt install wavebox ttf-mscorefonts-installer -y
+
+# Install TeamViewer
+curl -L https://download.teamviewer.com/download/linux/teamviewer_amd64.deb -o ~/teamviewer_amd64.deb \
+	&& apt install ~/teamviewer_amd64.deb -y \
+	&& rm ~/teamviewer_amd64.deb 
+
+# Install Tresorit
+curl -L https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run -o ~/tresorit_installer.run \
+	&& sh ./tresorit_installer.run \
+	&& rm ~/tresorit_installer.run
+
+# Install Etcher
+curl -L https://github.com/balena-io/etcher/releases/download/v1.5.18/balena-etcher-electron_1.5.18_amd64.deb -o ~/etcher.deb \
+	&& apt install ~/etcher.deb -y \
+	&& rm ~/etcher.deb
+
+# Install ExpressVPN
+curl -L https://download.expressvpn.xyz/clients/linux/expressvpn_2.0.0-1_amd64.deb -o ~/expressvpn.deb \
+	&& apt install ~/expressvpn.deb -y \
+	&& rm ~/expressvpn.deb
+
+# Install CircleCI
 curl -fLSs https://circle.ci/cli | sudo bash
 
+# Install ZeroTier
 curl -s 'https://pgp.mit.edu/pks/lookup?op=get&search=0x1657198823E52A61' | gpg --import && \
 if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | bash; fi
 
@@ -136,7 +162,7 @@ if [ "$customisations" = "gnome" ]; then
 	fi
 	gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 	gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
-	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'powershell_powershell.desktop', 'chromium-browser.desktop', 'org.gnome.Evolution.desktop', 'virtualbox.desktop', 'vscode_vscode.desktop', 'phpstorm_phpstorm.desktop', 'webstorm_webstorm.desktop', 'pycharm-professional_pycharm-professional.desktop', 'datagrip_datagrip.desktop', 'mysql-workbench.desktop', 'pgadmin3.desktop', 'sublime-text_subl.desktop', 'sftpclient_sftpclient.desktop', 'gitkraken.desktop', 'github-desktop_github-desktop.desktop', 'postman_postman.desktop', 'insomnia_insomnia.desktop', 'altair_altair.desktop', 'org.remmina.Remmina.desktop', 'pidgin.desktop', 'spotify_spotify.desktop', 'onlyoffice-desktopeditors_onlyoffice-desktopeditors.desktop', 'balena-etcher-electron.desktop', 'org.gnome.Screenshot.desktop', 'wavebox.desktop']"
+	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'powershell_powershell.desktop', 'chromium-browser.desktop', 'org.gnome.Evolution.desktop', 'virtualbox.desktop', 'vscode_vscode.desktop', 'phpstorm_phpstorm.desktop', 'webstorm_webstorm.desktop', 'pycharm-professional_pycharm-professional.desktop', 'datagrip_datagrip.desktop', 'mysql-workbench.desktop', 'pgadmin3.desktop', 'sublime-text_subl.desktop', 'sftpclient_sftpclient.desktop', 'gitkraken.desktop', 'github-desktop_github-desktop.desktop', 'postman_postman.desktop', 'insomnia_insomnia.desktop', 'altair_altair.desktop', 'org.remmina.Remmina.desktop', 'pidgin.desktop', 'spotify.desktop', 'onlyoffice-desktopeditors_onlyoffice-desktopeditors.desktop', 'balena-etcher-electron.desktop', 'org.gnome.Screenshot.desktop', 'wavebox.desktop']"
 fi
 
 if [ "$customisations" = "cinnamon" ]; then
