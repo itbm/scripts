@@ -52,8 +52,8 @@ apt install pidgin pidgin-sipe evolution evolution-ews -y
 # Install Tools
 apt install vim dos2unix git git-svn composer s3cmd curl wget -y
 
-# Install Virtualbox, Chromium & Remmina
-apt install virtualbox virtualbox-ext-pack chromium-browser remmina -y
+# Install Virtualbox, Chromium, Remmina & GIMP
+apt install virtualbox virtualbox-ext-pack chromium-browser remmina gimp -y
 
 # Install PHP Extensions
 apt install php-mbstring php-dom php-pdo-sqlite sqlite3 -y
@@ -68,16 +68,50 @@ snap install pycharm-professional --classic
 snap install sublime-text --classic
 snap install github-desktop --edge
 snap install sftpclient
-snap install postman
-snap install insomnia
 snap install vscode --classic
-snap install gimp
 snap install powershell --classic
 snap install altair
-snap install kubectl --classic
-snap install helm --classic
-snap install doctl --classic
 snap install aws-cli --classic
+
+# Install Postman
+apt install libgconf-2-4 -y
+wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+tar -xzf postman.tar.gz -C /opt
+rm postman.tar.gz
+ln -s /opt/Postman/Postman /usr/bin/postman
+wget https://www.getpostman.com/img/v2/logo-glyph.png -O /opt/Postman/postman.png
+cat <<EOT >> /usr/share/applications/postman.desktop
+[Desktop Entry]
+Type=Application
+Name=Postman
+Icon=/opt/Postman/postman.png
+Path=/opt/Postman
+Exec="/opt/Postman/Postman"
+StartupNotify=false
+StartupWMClass=Postman
+OnlyShowIn=Unity;GNOME;
+X-UnityGenerated=true
+EOT
+
+# Install Insomnia REST Client
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | tee -a /etc/apt/sources.list.d/insomnia.list
+wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | apt-key add -
+apt update
+apt install insomnia -y
+
+# Install doctl
+curl -sL https://github.com/digitalocean/doctl/releases/download/v1.14.0/doctl-1.14.0-linux-amd64.tar.gz | tar -xzv
+mv ~/doctl /usr/local/bin
+
+# Install Kubectl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+apt update
+apt install -y kubectl
+
+# Install helm
+curl -sL https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz | tar -xzv
+mv ~/helm /usr/local/bin
 
 # Install Spotify
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
@@ -162,7 +196,7 @@ if [ "$customisations" = "gnome" ]; then
 	fi
 	gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 	gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
-	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'powershell_powershell.desktop', 'chromium-browser.desktop', 'org.gnome.Evolution.desktop', 'virtualbox.desktop', 'vscode_vscode.desktop', 'phpstorm_phpstorm.desktop', 'webstorm_webstorm.desktop', 'pycharm-professional_pycharm-professional.desktop', 'datagrip_datagrip.desktop', 'mysql-workbench.desktop', 'pgadmin3.desktop', 'sublime-text_subl.desktop', 'sftpclient_sftpclient.desktop', 'gitkraken.desktop', 'github-desktop_github-desktop.desktop', 'postman_postman.desktop', 'insomnia_insomnia.desktop', 'altair_altair.desktop', 'org.remmina.Remmina.desktop', 'pidgin.desktop', 'spotify.desktop', 'onlyoffice-desktopeditors_onlyoffice-desktopeditors.desktop', 'balena-etcher-electron.desktop', 'org.gnome.Screenshot.desktop', 'wavebox.desktop']"
+	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'powershell_powershell.desktop', 'chromium-browser.desktop', 'org.gnome.Evolution.desktop', 'virtualbox.desktop', 'vscode_vscode.desktop', 'phpstorm_phpstorm.desktop', 'webstorm_webstorm.desktop', 'pycharm-professional_pycharm-professional.desktop', 'datagrip_datagrip.desktop', 'mysql-workbench.desktop', 'pgadmin3.desktop', 'sublime-text_subl.desktop', 'sftpclient_sftpclient.desktop', 'gitkraken.desktop', 'github-desktop_github-desktop.desktop', 'postman.desktop', 'insomnia.desktop', 'altair_altair.desktop', 'org.remmina.Remmina.desktop', 'pidgin.desktop', 'spotify.desktop', 'onlyoffice-desktopeditors_onlyoffice-desktopeditors.desktop', 'balena-etcher-electron.desktop', 'org.gnome.Screenshot.desktop', 'wavebox.desktop']"
 fi
 
 if [ "$customisations" = "cinnamon" ]; then
