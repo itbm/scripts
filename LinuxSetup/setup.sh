@@ -42,7 +42,7 @@ curl -sL https://deb.nodesource.com/setup_11.x | -E bash -
 apt install nodejs npm -y
 
 apt install snapd mysql-workbench pgadmin3 pidgin pidgin-sipe evolution evolution-ews \
-	vim dos2unix git git-svn composer s3cmd curl wget virtualbox virtualbox-ext-pack -y
+	vim dos2unix git git-svn composer s3cmd curl wget virtualbox virtualbox-ext-pack chromium-browser remmina -y
 
 apt install php-mbstring php-dom php-pdo-sqlite sqlite3 -y
 
@@ -67,11 +67,13 @@ curl -L https://download.teamviewer.com/download/linux/teamviewer_amd64.deb -o ~
 	&& apt install ~/teamviewer_amd64.deb -y \
 	&& rm ~/teamviewer_amd64.deb 
 
-snap install remmina
-sudo snap connect remmina:avahi-observe :avahi-observe
-sudo snap connect remmina:cups-control :cups-control
-sudo snap connect remmina:mount-observe :mount-observe
-sudo snap connect remmina:password-manager-service :password-manager-service
+curl -L https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run -o ~/tresorit_installer.run \
+	&& sh ./tresorit_installer.run \
+	&& rm ~/tresorit_installer.run
+
+curl -L https://github.com/balena-io/etcher/releases/download/v1.5.18/balena-etcher-electron_1.5.18_amd64.deb -o ~/etcher.deb \
+	&& apt install ~/etcher.deb -y \
+	&& rm ~/etcher.deb
 
 snap install kubectl --classic
 snap install doctl --classic
