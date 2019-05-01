@@ -40,8 +40,8 @@ apt update
 apt install docker-ce docker-compose -y
 
 # Install Node
-curl -sL https://deb.nodesource.com/setup_11.x | -E bash -
-apt install nodejs npm -y
+curl -sL https://deb.nodesource.com/setup_11.x | bash -
+apt install nodejs -y
 
 # Install MySQL Workbench & pgAdmin3
 apt install mysql-workbench pgadmin3 -y 
