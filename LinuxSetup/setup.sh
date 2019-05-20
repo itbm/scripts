@@ -191,6 +191,7 @@ fi
 if [ "$customisations" = "gnome" ]; then
 	echo "* Running gnome customisations ....";
 	apt install gnome-shell-extensions
+	apt install network-manager-openvpn-gnome strongswan network-manager-strongswan libstrongswan-extra-plugins network-manager-l2tp network-manager-l2tp-gnome network-manager-ssh network-manager-ssh-gnome -y
 	if [ "$razer" = "y" ]; then
 		gsettings set org.gnome.desktop.background picture-uri file:///${HOME}/Pictures/Graphite-1920x1080.png
 	fi
